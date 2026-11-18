@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="120" fill="white"/>
+  <!-- Outer Thin Outline (Faceted Hexagon) -->
+  <path 
+    d="M50 5L88 25L95 55V65L88 95L50 115L12 95L5 65V55L12 25L50 5Z" 
+    stroke="#1F1F1F" 
+    stroke-width="1.5"
+    stroke-linejoin="miter"
+  />
+
+  <!-- Inner Thick Border (Faceted Hexagon) -->
+  <path 
+    d="M50 15L80 32L86 56V64L80 88L50 105L20 88L14 56V32L20 32L50 15Z" 
+    fill="none"
+    stroke="#1F1F1F" 
+    stroke-width="5"
+    stroke-linejoin="miter"
+  />
+
+  <!-- Gorilla Face Emblem (Geometric & Symmetrical) -->
+  <g fill="#1F1F1F">
+    <!-- Brow Ridge with Spikes -->
+    <path d="M30 42L35 32L40 42H30Z" />
+    <path d="M60 42L65 32L70 42H60Z" />
+    <path d="M25 42H75V52H25V42Z" />
+
+    <!-- Cheek / Mid-face Geometry (Creating Eye Cutouts with Negative Space) -->
+    <path d="M25 55H42L40 65H25V55Z" />
+    <path d="M58 55H75V65H60L58 55Z" />
+    <path d="M46 55H54V60H46V55Z" />
+    
+    <!-- Main Muzzle / Snout (Large blocky shape) -->
+    <path d="M32 68H68L62 88H38L32 68Z" />
+
+    <!-- Lower Jaw / Chin (Detached) -->
+    <path d="M44 92H56L54 102H46L44 92Z" />
+  </g>
+</svg>

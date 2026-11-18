@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-bg-dark: var(--bg-dark);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-platinum: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-success: #5FD4A7;
+  --color-warning: #F5B971;
+  --color-danger: #FF6B7A;
+  --color-error: #EF4444;
+  --color-lavender: #D9B6FF;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Plus Jakarta Sans", sans-serif;
+
+  --radius-xl: 20px;
+  --radius-lg: 14px;
+
+  @keyframes gradient-slow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes ambient-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+    50% { transform: translate3d(0, -14px, 0) scale(1.04); opacity: 0.78; }
+  }
+}
+
+@layer base {
+  :root {
+    --primary: #B14AE0;
+    --primary-deep: #8A1FC8;
+    --bg-dark: #0B0B0F;
+    --surface: #16161D;
+    --surface-light: #24242B;
+    --text-primary: #F5F4F8;
+    --text-secondary: rgba(245, 244, 248, 0.6);
+    --border: rgba(255, 255, 255, 0.05);
+    --on-primary: #FFFFFF;
+  }
+
+  .light {
+    --bg-dark: #F5F4F8;
+    --surface: #FFFFFF;
+    --surface-light: #F0F0F5;
+    --text-primary: #0B0B0F;
+    --text-secondary: rgba(11, 11, 15, 0.6);
+    --border: rgba(0, 0, 0, 0.05);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg-dark text-platinum font-sans antialiased selection:bg-primary/30;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  /* Prevent iOS automatic input zooming on mobile */
+  @media (max-width: 768px) {
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer components {
+  .animate-gradient-slow {
+    background-size: 200% 200%;
+    animation: gradient-slow 8s ease infinite;
+  }
+
+  .glass-panel {
+    @apply bg-surface/60 backdrop-blur-xl border border-border shadow-2xl;
+  }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 45%, var(--bg-dark) 100%);
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 40px -10px rgba(177, 74, 224, 0.3);
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-primary hover:bg-primary-deep text-[var(--on-primary)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-primary/40 active:scale-[0.97] flex items-center justify-center gap-2 touch-manipulation cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-surface hover:bg-surface-light border border-border text-platinum px-6 py-3 rounded-lg font-semibold transition-all duration-200 active:scale-[0.97] flex items-center justify-center gap-2 touch-manipulation cursor-pointer;
+  }
+
+  .responsive-container {
+    @apply w-full max-w-[1200px] mx-auto;
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Safe Area Helpers */
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .pt-safe {
+    padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+  }
+
+  .tap-feedback {
+    @apply active:scale-[0.97] transition-transform duration-150 touch-manipulation;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-light rounded-full hover:bg-primary/50 transition-colors;
+}
+
+/* Mobile Scrollbar Hide Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
